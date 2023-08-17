@@ -25,14 +25,17 @@ For more details about the configuration steps on vSphere to use NVIDA GPUs, ple
 First you need to install the NVIDIA driver for Ubuntu 22.04. 
 - From the graphical interface, launch the `Software and Updtes` application. Select the
 `Additional Drivers` tab and from the `NVIDIA Corporation` section pick the driver that is labeled as `(propietary, tested)`. When building this 
-working example, we picked `driver 535`. After selecting the driver, the system will get reconfigured. Even if you're no asked to do so, it 
-is convenient to reboot the OS with the command:
-```azure
-reboot
-```
-From the CLI run the following command:
+working example, we picked `driver 535`.
+
+Alternativly from the CLI run the following command:
 ```azure
 sudo apt install nvidia-driver-535 nvidia-dkms-535
+```
+
+After selecting the driver, the system will get reconfigured. Even if you're no asked to do so, it 
+is convenient to reboot the OS with the command:
+```azure
+sudo reboot
 ```
 
 Next, you need to download the CUDA 11.8 toolkit and install it. Follow the next steps:
@@ -44,7 +47,7 @@ wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/
 # Execute the run file
 sudo sh cuda_11.8.0_520.61.05_linux.run
 ````
-The CLI command will start a text-based dialog interface. You will get a warming like this:
+The CLI command will start a text-based dialog interface. You will get a warning like this:
 ````
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │ Existing package manager installation of the driver found. It is strongly    │
@@ -76,7 +79,7 @@ option and hit `Enter` as shown next.
 │ Up/Down: Move | Left/Right: Expand | 'Enter': Select | 'A': Advanced options │
 └──────────────────────────────────────────────────────────────────────────────┘
 ````
-Once the installer finishes, add a new line to `/etc/ld.so.conf` with the `/usr/local/cuda-11.8/lib64` entry an run:
+Once the installer finishes, add a new line to `/etc/ld.so.conf` with the `/usr/local/cuda-11.8/lib64` entry and run:
 ````azure
 sudo ldconfig
 ````
@@ -89,7 +92,7 @@ ls /usr/local
 ### Miniconda installation steps.
 
 We recommend the use of [Miniconda](https://docs.conda.io/en/latest/miniconda.html) as the Python package management system over the default 
-distributions embedded in the OS. Here the shell commands you need to run to setup a Python environment.<br>
+distributions embedded in the OS. Here are the shell commands you need to run to setup a Python environment.<br>
 
 ```shell
 ## Installing Miniconda
