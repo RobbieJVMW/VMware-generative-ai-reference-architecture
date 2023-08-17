@@ -30,6 +30,10 @@ is convenient to reboot the OS with the command:
 ```azure
 reboot
 ```
+From the CLI run the following command:
+```azure
+sudo apt install nvidia-driver-535 nvidia-dkms-535
+```
 
 Next, you need to download the CUDA 11.8 toolkit and install it. Follow the next steps:
 
